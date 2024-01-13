@@ -35,7 +35,26 @@ def SearchByName(name:str):
         print("Student Not Found")
         return None
 
+def Sort():
+    isSwap = True
+    for i in range(len(STUDENTS)):
+        for j in range(len(STUDENTS)-i-1):
+            if STUDENTS[j].Marks < STUDENTS[j+1].Marks:
+                temp = STUDENTS[j]
+                STUDENTS[j] = STUDENTS[j+1]
+                STUDENTS[j+1] = temp
+                isSwap = True
+            else:
+                isSwap = False
+        if isSwap == False:
+            return STUDENTS
+    return STUDENTS
+
+
 A = Student("A", "S3C1", 19021, 50)
 B = Student("B", "S3C1", 19022, 90)
-print(A.AvgMarks())
-print(SearchByName("A"))
+C = Student("C", "S3C1", 19023, 60)
+D = Student("D", "S3C1", 19024, 100)
+new = Sort()
+for i in new:
+    print(f"Name: {i.Name}\t Class: {i.Class} \t ID: {i.ID} \t Marks: {i.Marks}")
